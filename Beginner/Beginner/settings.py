@@ -23,9 +23,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = '=wp)8^fn_d98h231e)inx$(j+1xyghd=2gm9m4l05e_wl8u_54'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.hieubn.com']
 
 
 # Application definition
