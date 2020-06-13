@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+	Happiness Home
+{% endblock title %}
+
+{% block customhead %}
+	<link rel="stylesheet" href="{% static 'css/master.css'%}">
+{% endblock customhead %}
+
+{% block content %}
+<div class="container jumbotron">
+  <h1 class="text-success">You are now logged in!</h1>
+  <h2><a href="{% url 'books:book-index'%}">Go to Book Store</a></h2>
+</div>
+
+{% endblock %}

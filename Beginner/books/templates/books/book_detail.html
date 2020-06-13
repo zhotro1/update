@@ -1,0 +1,29 @@
+{% extends "books/base.html" %}
+{% load static %}
+{% block content %}
+	{% if not book %}
+	<h1>No book Here</h1>
+	{% else %}
+	   <div class="container">
+        <div class="row">
+            {% if book.image %}
+                <div class="col-md-5"><img src="{{book.image.url}}" alt="img"></div>
+            {% else %}
+                <div class="col-md-5"><img src="{{book.image_url}}" alt="img"></div>
+            {% endif %}
+            <div class="col-md-4"><h2>{{book.title}}</h2></div>
+            {% if book.author %}
+                <h3 >Author: <span class="text-primary"><i>{{book.author}}</i></span></h3>
+            {% endif %}
+        </div>
+        <h3 style="font-size: medium"><i>{{book.descriptions}}</i></h3>
+        </div>
+        {% if book.download %}
+            <div class="text-center"><a href="{{book.download}}">Click here to Download the Book free</a></div>
+        {% else %}
+            <div class="text-center text-warning">Download unavailable</div>
+        {% endif %}
+        
+	{% endif %}
+
+{% endblock content %}

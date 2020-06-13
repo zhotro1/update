@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+	Happiness Home
+{% endblock title %}
+
+{% block customhead %}
+	<link rel="stylesheet" href="{% static 'css/master.css'%}">
+{% endblock customhead %}
+
+{% block content %}
+
+    <img class="img-fluid" src="{% static 'img/heart-book.jpg' %}" alt="welcome to my Home!">
+
+{% endblock %}
+
+{% block footer %}
+	{% include "footer.html" %}
+{% endblock footer %}
