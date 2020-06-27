@@ -37,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'accounts.apps.AccountsConfig',
-    'books.apps.BooksConfig',
-    'tasks.apps.TasksConfig',
-    'whois.apps.WhoisConfig',
+    'accounts',
+    'books',
+    'tasks',
+    'simplesocial',
 
     'bootstrap4',
     'rest_framework',

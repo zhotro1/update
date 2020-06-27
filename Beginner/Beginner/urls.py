@@ -19,8 +19,7 @@ from . import views
 from tasks import views as tviews
 from django.conf import settings
 from django.conf.urls.static import static
-from whois import apis
-from whois import views as whois_views
+
 
 
 urlpatterns = [
@@ -33,8 +32,6 @@ urlpatterns = [
     path('accounts/', include("accounts.urls", namespace="accounts")),
     path('accounts/', include("django.contrib.auth.urls")),
     path('books/', include('books.urls', namespace='books')),
-    path('api/whois/persions/', apis.PersionListView.as_view(), name='api-get-list-persion'),
-    path('game/v1/', whois_views.index, name='whois'),
 ]
 
 if settings.DEBUG:

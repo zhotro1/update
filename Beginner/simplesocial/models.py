@@ -7,6 +7,3 @@ class Persion(models.Model):
 
 	def __str__(self):
 		return self.persion_name
-
-
-	
