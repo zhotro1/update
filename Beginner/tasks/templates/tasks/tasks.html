@@ -72,10 +72,12 @@
         </div>
         <div class="col-lg-2 col-md-2"></div>
     </div>
+    <input type="hidden" id="myVar" name="variable" value="{{ hidenav }}">
     <footer class="panel-footer text-center" style="margin-top: 100px; color:red">Chúc bạn ngày mới tốt lành!</footer>
 {% endblock %}
 
 {% block script %}
+    <script src="{% static "js/task.js" %}"></script>
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
@@ -89,7 +91,7 @@
         });
         $("#annav").click(function(){
             $("nav").remove();
-        })
+        });
     </script>
 
     <script>

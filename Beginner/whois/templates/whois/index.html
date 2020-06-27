@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+	Game Giai Tri
+{% endblock title %}
+
+{% block customhead %}
+	<link rel="stylesheet" href="{% static 'css/master.css'%}">
+	<style>
+	.responsive {
+	  width: 100%;
+	  max-width: 200px;
+	  height: auto;
+	  border-radius: 50%;
+	}
+	</style>
+{% endblock customhead %}
+
+
+{% block content %}
+	<body>
+		<div class="row">
+			<div class="col">
+				<img src="" alt="image" id='myid' class="responsive">
+			</div>
+			
+		</div>
+		  
+{% endblock content %}
+
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	console.log('ready');
+	$.ajax({
+		url: '/api/whois/persions/',
+		method: 'GET',
+		success: function(data) {
+			console.log('hieu')
+			$('#none').append(data[0]['persion_name']);	
+			$('#myid').attr('src', data[0]['persion_img']);
+		}
+	});
+});
+
+</script>
+
+{% endblock script %}

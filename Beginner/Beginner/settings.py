@@ -25,7 +25,7 @@ SECRET_KEY = '=wp)8^fn_d98h231e)inx$(j+1xyghd=2gm9m4l05e_wl8u_54'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.hieubn.com']
+ALLOWED_HOSTS = ['www.hieubn.com',]
 
 
 # Application definition
@@ -37,10 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'accounts.apps.AccountsConfig',
     'books.apps.BooksConfig',
     'tasks.apps.TasksConfig',
+    'whois.apps.WhoisConfig',
+
     'bootstrap4',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -107,7 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
 
 TIME_ZONE = 'UTC'
@@ -117,6 +121,21 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+MIDDLEWARE += [          # locale middleware
+    'django.middleware.locale.LocaleMiddleware',
+]
+
+LANGUAGE_CODE = 'vi'  # default (fallback) language
+LANGUAGES = (            # supported languages
+    ('en', 'English'),
+    ('vi', 'VietNam'),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 
 # Static files (CSS, JavaScript, Images)
@@ -130,3 +149,13 @@ LOGOUT_REDIRECT_URL = 'thanks'
 
 MEDIA_URL='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+        'rest_framework.parsers.FileUploadParser',
+    ]
+}
