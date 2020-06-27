@@ -2,27 +2,30 @@
 {% load static %}
 
 {% block title %}
-	Game Giai Tri
+	Game v1
 {% endblock title %}
-
-{% block customhead %}
-	<link rel="stylesheet" href="{% static 'css/master.css'%}">
-	<style>
-	.responsive {
-	  width: 100%;
-	  max-width: 200px;
-	  height: auto;
-	  border-radius: 50%;
-	}
-	</style>
-{% endblock customhead %}
 
 
 {% block content %}
 	<body>
 		<div class="row">
 			<div class="col">
-				<img src="" alt="image" id='myid' class="responsive">
+				<table>
+					<tr>
+						<td><img src="" alt="image" id='myid' class="responsive"></td>
+						<tr>
+							<td><p class="text-center" id="none"></p></td>
+							<td><p class="text-center" id="none"></p></td>
+						</tr>
+						<tr>
+							<td><p class="text-center" id="none"></p></td>
+							<td><p class="text-center" id="none"></p></td>
+						</tr>
+						
+					</tr>
+				</table>
+				
+				
 			</div>
 			
 		</div>
@@ -39,7 +42,6 @@ $(document).ready(function(){
 		url: '/api/whois/persions/',
 		method: 'GET',
 		success: function(data) {
-			console.log('hieu')
 			$('#none').append(data[0]['persion_name']);	
 			$('#myid').attr('src', data[0]['persion_img']);
 		}
