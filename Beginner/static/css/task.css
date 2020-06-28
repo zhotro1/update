@@ -6,6 +6,13 @@ img {
 	margin: 0 auto 0 auto;
 }
 
+#descriptions {
+	color: black;
+	font-size: small;
+	font-style: italic;
+
+}
+
 .adanger{
     color: #dc3545; /* red */
 }
@@ -37,3 +44,5 @@ img {
 .dprimary:hover{
     color: #007bff; /* blue */
 }
+
+

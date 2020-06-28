@@ -25,7 +25,7 @@ function checkForm(){
     var title =document.getElementById('id_title').value;
     var descriptions =document.getElementById('id_description').value;
     var priority =document.getElementById('id_priority').value;
-    var html = `<div id=`+iddd.toString()+` class="card btn-block" style="margin-top: 10px; border-radius: 0px; padding: 10px; background-color: #fafafa">
+    var html = `<div id=`+iddd.toString()+` class="card btn-block" style="margin-top: 10px; border-radius: 5px; padding: 10px; background-color: #fafafa">
         <div class="row">
             <div class="col-9">
 
@@ -34,7 +34,7 @@ function checkForm(){
                 <div class="collapse" id="`+id.toString()+`" style="">
                       <div class="" style="border-radius: 0;">
                         <div class="row">
-                            <div class="col">`+
+                            <div class="col" id="descriptions">`+
                                 descriptions.toString()
                             +`</div>
                         </div>
