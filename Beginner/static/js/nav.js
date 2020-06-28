@@ -1,5 +1,5 @@
-$("select").change(function(){
-		$("form#submitform").submit();
+$("#language").change(function(){
+		$("#submitform").submit();
 })
 
 $("input#hide").hide()
