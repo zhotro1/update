@@ -3,7 +3,7 @@
 }
 
 .bwarning{
-    color: #ffc107; /* orange */
+    color: #007bff; /* yellow */
 }
 
 .csuccess{
@@ -15,7 +15,7 @@
 }
 
 .adanger:hover{
-    color: #dc3545; /* red */
+    color: #ffc107; /* red */
 }
 
 .bwarning:hover{
@@ -23,7 +23,7 @@
 }
 
 .csuccess:hover{
-    color: #28a745; /* green */
+    color: #ffc107; /* green */
 }
 
 .dprimary:hover{
