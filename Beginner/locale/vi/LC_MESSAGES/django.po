@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-28 00:34+0000\n"
+"POT-Creation-Date: 2020-06-28 01:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,6 +103,10 @@ msgstr "Thêm nhiệm vụ mới"
 #: tasks/templates/tasks/tasks.html:34
 msgid "What are you doing today?"
 msgstr "Bạn đang cần làm gì hôm nay?"
+
+#: tasks/templates/tasks/tasks.html:39
+msgid "Describe this job"
+msgstr "Mô tả công việc này"
 
 #: tasks/templates/tasks/tasks.html:45
 msgid "High priority"
