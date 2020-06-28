@@ -1,8 +1,7 @@
 {% extends 'tasks/base.html' %}
 {% load tags %}
 {% load static %}
-
-{% block title %}To Do List{% endblock %}
+{% load i18n %}
 
 {% block content %}
     <div class="container text-center">
@@ -16,7 +15,7 @@
                 <div style="padding-top: 10px;">
                 <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTask" style="border-radius: 40px;">
-                  + Thêm tác vụ mới
+                  + {% trans "Add new task" %}
                     </button>
                 </div>
             </div>
@@ -32,26 +31,26 @@
                             <form id="MyForm">
                                 <div class="row">
                                     <div class="form-group col text-center">
-                                        <input type="text" name="title" placeholder="Bạn đang cần làm gì hôm nay?" maxlength="200" class="form-control" required="" id="id_title">
+                                        <input type="text" name="title" placeholder="{% trans "What are you doing today?" %}?" maxlength="200" class="form-control" required="" id="id_title">
                                      </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col text-center">
-                                    <textarea name="description" cols="80" rows="3" placeholder="Mô tả công việc này .." maxlength="1000" class="form-control" id="id_description"></textarea>
+                                    <textarea name="description" cols="80" rows="3" placeholder="Describe this job .." maxlength="1000" class="form-control" id="id_description"></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-7">
                                         <select name="priority" class="form-control" id="id_priority">
-                                            <option value="adanger" selected="">Ưu tiên cao</option>
-                                            <option value="bwarning">Ưu tiên vừa</option>
-                                            <option value="csuccess">Ưu tiên thấp</option>
+                                            <option value="adanger" selected="">{% trans "High priority" %}</option>
+                                            <option value="bwarning">{% trans "Medium priority" %}</option>
+                                            <option value="csuccess">{% trans "Low priority" %}</option>
                                         </select>
                                     </div>
                                     <div class="col-5">
                                         <div class="btn-group float-right" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                            <button type="button" class="btn btn-primary" onclick="checkForm()" data-dismiss="modal">Thêm  </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Cancel" %}</button>
+                                            <button type="button" class="btn btn-primary" onclick="checkForm()" data-dismiss="modal">{% trans "Add" %}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +72,7 @@
         <div class="col-lg-2 col-md-2"></div>
     </div>
     <input type="hidden" id="myVar" name="variable" value="{{ hidenav }}">
-    <footer class="panel-footer text-center" style="margin-top: 100px; color:red">Chúc bạn ngày mới tốt lành!</footer>
+    <footer class="panel-footer text-center" style="margin-top: 100px; color:red">{% trans "Have a good day!" %}</footer>
 {% endblock %}
 
 {% block script %}

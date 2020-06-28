@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-27 12:35+0000\n"
+"POT-Creation-Date: 2020-06-28 00:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,123 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: accounts/forms.py:13
+msgid "Display name"
+msgstr "Tên hiển thị"
+
+#: accounts/forms.py:14
+msgid "Email address"
+msgstr "Địa chỉ email"
+
 #: accounts/templates/accounts/login.html:9
 #: accounts/templates/accounts/login.html:14
 msgid "Login"
 msgstr "Đăng nhập"
 
+#: accounts/templates/accounts/signup.html:7
+#: accounts/templates/accounts/signup.html:12
+msgid "Sign Up"
+msgstr "Đăng kí"
+
+#: books/templates/books/base.html:5
+#, fuzzy
+#| msgid "Books"
+msgid "Books Store"
+msgstr "Sách"
+
+#: books/templates/books/book_detail.html:6
+#, fuzzy
+#| msgid "No book Searched"
+msgid "No book Here"
+msgstr "Không tìm thấy quyển sách này."
+
+#: books/templates/books/book_detail.html:17
+msgid "Author"
+msgstr "Tác giả"
+
+#: books/templates/books/book_detail.html:23
+msgid "Click here to Download the Book free"
+msgstr "Nhấn vào đây để tải về Sách miễn phí"
+
+#: books/templates/books/book_detail.html:25
+msgid "Download unavailable"
+msgstr "Tải xuống không có sẵn"
+
+#: books/templates/books/book_list.html:7
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: books/templates/books/book_list.html:13
+msgid "No book Searched"
+msgstr "Không tìm thấy quyển sách này."
+
+#: books/templates/books/book_list.html:40
+msgid "first"
+msgstr "trang đầu"
+
+#: books/templates/books/book_list.html:41
+msgid "previous"
+msgstr "trang trước"
+
+#: books/templates/books/book_list.html:45
+msgid "Page"
+msgstr "Trang"
+
+#: books/templates/books/book_list.html:45
+msgid "of"
+msgstr "của"
+
+#: books/templates/books/book_list.html:49
+msgid "next"
+msgstr "tiếp theo"
+
+#: books/templates/books/book_list.html:50
+msgid "last"
+msgstr "cuối cùng"
+
+#: tasks/templates/tasks/base.html:6
+msgid "To do list"
+msgstr "Danh sách việc cần làm"
+
+#: tasks/templates/tasks/tasks.html:18
+msgid "Add new task"
+msgstr "Thêm nhiệm vụ mới"
+
+#: tasks/templates/tasks/tasks.html:34
+msgid "What are you doing today?"
+msgstr "Bạn đang cần làm gì hôm nay?"
+
+#: tasks/templates/tasks/tasks.html:45
+msgid "High priority"
+msgstr "Ưu tiên cao"
+
+#: tasks/templates/tasks/tasks.html:46
+msgid "Medium priority"
+msgstr "Ưu tiên trung bình"
+
+#: tasks/templates/tasks/tasks.html:47
+msgid "Low priority"
+msgstr "Ưu tiên thấp"
+
+#: tasks/templates/tasks/tasks.html:52
+msgid "Cancel"
+msgstr "Hủy bỏ"
+
+#: tasks/templates/tasks/tasks.html:53
+msgid "Add"
+msgstr "Thêm vào"
+
+#: tasks/templates/tasks/tasks.html:75
+msgid "Have a good day!"
+msgstr "Chúc bạn ngày mới tốt lành!"
+
 #: tasks/views.py:7
 msgid "hide"
 msgstr "ẩn"
+
+#: templates/index.html:6 templates/test.html:5 templates/thanks.html:5
+msgid "Happiness Home"
+msgstr "Ngôi nhà hạnh phúc"
 
 #: templates/nav.html:17
 msgid "Tasks"
@@ -46,3 +155,15 @@ msgstr "Đăng nhập"
 #: templates/nav.html:24
 msgid "Sign up"
 msgstr "Đăng kí"
+
+#: templates/test.html:14
+msgid "You are now logged in"
+msgstr "Bạn đã hoàn thành đăng nhập"
+
+#: templates/test.html:15
+msgid "Go to Book Store"
+msgstr "Đi đến kho sách"
+
+#: templates/thanks.html:13
+msgid "Thanks for visiting! Come back soon"
+msgstr "Cảm ơn bạn đã ghé thăm! quay lại sớm nha"

@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django.utils.translation import gettext as _
 
 
 class UserCreateForm(UserCreationForm):
@@ -9,5 +10,5 @@ class UserCreateForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["username"].label = "Display name"
-        self.fields["email"].label = "Email address"
+        self.fields["username"].label = _("Display name")
+        self.fields["email"].label = _("Email address")

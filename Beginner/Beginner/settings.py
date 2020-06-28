@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'books',
     'tasks',
     'simplesocial',
+    'apis',
 
     'bootstrap4',
     'rest_framework',

@@ -1,16 +1,16 @@
 {% extends "books/base.html" %}
 {% load static %}
+{% load i18n %}
 {% block nav %}
     <form class="form-inline my-2 my-lg-0" action="{% url 'books:book-index' %}" method="GET">
-        {# {% csrf_token %} #}
       <input class="form-control mr-sm-2" type="search" placeholder="Find the book" aria-label="Find the book" name='q'>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
     </form>
 {% endblock nav %}
 
 {% block content %}
 	{% if not books %}
-	<h1 class="jumbotron text-center text-info">No book Searched</h1>
+	<h1 class="jumbotron text-center text-info">{% trans "No book Searched" %}</h1>
 	{% else %}
 	            <div class="container">
                 <div class="row">
@@ -37,17 +37,17 @@
             <div class="pagination">
                 <span class="step-links">
                     {% if page_obj.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        <a href="?page=1">&laquo; {% trans "first" %}</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">{% trans "previous" %}</a>
                     {% endif %}
 
                     <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        {% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ page_obj.paginator.num_pages }}.
                     </span>
 
                     {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">next</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        <a href="?page={{ page_obj.next_page_number }}">{% trans "next" %}</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">{% trans "last" %} &raquo;</a>
                     {% endif %}
                  </span>
             </div>

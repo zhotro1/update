@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 {% block title %}
-	Happiness Home
+	{% trans "Happiness Home" %}
 {% endblock title %}
 
 {% block customhead %}
@@ -9,6 +10,6 @@
 {% endblock customhead %}
 
 {% block content %}
-<h1 class="container jumbotron text-success">Thanks for visiting! Come back soon!</h1>
+<h1 class="container jumbotron text-success">{% trans "Thanks for visiting! Come back soon" %}!</h1>
 
 {% endblock %}
