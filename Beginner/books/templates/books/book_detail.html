@@ -7,7 +7,7 @@
 	<h1 class="text-center">{% trans "No book Here" %}</h1>
 	{% else %}
         {% if book.iframe %}
-            <div style="overflow:hidden">{% autoescape off %}{{ book.iframe }}{% endautoescape %}</div>
+            {% autoescape off %}{{ book.iframe }}{% endautoescape %}
         {% else %}
             <h1 class="text-center">{% trans "contents are updating" %}</h1>
         {% endif %}
@@ -15,15 +15,17 @@
 {% endblock content %}
 
 {% block script %}
-        <script>
-    $(document).ready(function(){
-       $("iframe").height($(window).height());
-       $("iframe").width($("body").width());
+    <script>
+        $(document).ready(function(){
+           $("iframe").height($(window).height());
+           $("iframe").width($("body").width());
 
-       $(window).resize(function() {
-            $("iframe").height($(window).height());
-            $("iframe").width($("body").width());
+           $(window).resize(function() {
+                $("iframe").height($(window).height());
+                $("iframe").width($("body").width());
+            });
         });
-    });
+        $("body").css("overflow", "hidden")
+        $("iframe").css("overflow", "auto")
   </script>
 {% endblock script %}
