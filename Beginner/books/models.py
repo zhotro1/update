@@ -1,17 +1,24 @@
 from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
+from django.core.exceptions import ValidationError
+
 
 # Create your models here.
 
 class Book(models.Model):
+	def validate_image(fieldfile_obj):
+		filesize = fieldfile_obj.file.size
+		megabyte_limit = 1.0
+		if filesize > megabyte_limit*1024*1024:
+			raise ValidationError("Max file size is %sMB"%str(megabyte_limit))
+
 	title = models.CharField(max_length=500, unique=True)
+	image = models.ImageField(upload_to='books/images',validators=[validate_image])
+	descriptions = models.TextField()
 	author = models.CharField(max_length=125, blank=True)
-	image = models.ImageField(upload_to='books/images', blank=True)
-	image_url = models.URLField(blank=True)
-	descriptions = models.TextField(blank=True)
-	download = models.URLField(blank=True)
-	slug = models.SlugField(allow_unicode=True, unique=True, blank=True)
+	slug = models.SlugField(editable=False, allow_unicode=True, unique=True, blank=True)
+	iframe = models.TextField(blank=True, null=True)
 
 	class Meta:
 		verbose_name = "Book"

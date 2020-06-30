@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-28 01:33+0000\n"
+"POT-Creation-Date: 2020-06-28 08:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,8 +31,9 @@ msgstr "Địa chỉ email"
 msgid "Login"
 msgstr "Đăng nhập"
 
-#: accounts/templates/accounts/signup.html:7
-#: accounts/templates/accounts/signup.html:12
+#: accounts/templates/accounts/signup.html:5
+#: accounts/templates/accounts/signup.html:10
+#: accounts/templates/accounts/signup.html:15
 msgid "Sign Up"
 msgstr "Đăng kí"
 
@@ -60,79 +61,83 @@ msgstr "Nhấn vào đây để tải về Sách miễn phí"
 msgid "Download unavailable"
 msgstr "Tải xuống không có sẵn"
 
-#: books/templates/books/book_list.html:7
-msgid "Search"
-msgstr "Tìm kiếm"
-
-#: books/templates/books/book_list.html:13
+#: books/templates/books/book_list.html:8
 msgid "No book Searched"
 msgstr "Không tìm thấy quyển sách này."
 
-#: books/templates/books/book_list.html:40
+#: books/templates/books/book_list.html:35
 msgid "first"
 msgstr "trang đầu"
 
-#: books/templates/books/book_list.html:41
+#: books/templates/books/book_list.html:36
 msgid "previous"
 msgstr "trang trước"
 
-#: books/templates/books/book_list.html:45
+#: books/templates/books/book_list.html:40
 msgid "Page"
 msgstr "Trang"
 
-#: books/templates/books/book_list.html:45
+#: books/templates/books/book_list.html:40
 msgid "of"
 msgstr "của"
 
-#: books/templates/books/book_list.html:49
+#: books/templates/books/book_list.html:44
 msgid "next"
 msgstr "tiếp theo"
 
-#: books/templates/books/book_list.html:50
+#: books/templates/books/book_list.html:45
 msgid "last"
 msgstr "cuối cùng"
+
+#: books/views.py:16
+msgid "Name of book"
+msgstr "Tên sách"
+
+#: books/views.py:17
+msgid "Search"
+msgstr "Tìm kiếm"
 
 #: tasks/templates/tasks/base.html:6
 msgid "To do list"
 msgstr "Danh sách việc cần làm"
 
-#: tasks/templates/tasks/tasks.html:18
+#: tasks/templates/tasks/tasks.html:17
 msgid "Add new task"
 msgstr "Thêm nhiệm vụ mới"
 
-#: tasks/templates/tasks/tasks.html:34
+#: tasks/templates/tasks/tasks.html:33
 msgid "What are you doing today?"
 msgstr "Bạn đang cần làm gì hôm nay?"
 
-#: tasks/templates/tasks/tasks.html:39
+#: tasks/templates/tasks/tasks.html:38
 msgid "Describe this job"
 msgstr "Mô tả công việc này"
 
-#: tasks/templates/tasks/tasks.html:45
+#: tasks/templates/tasks/tasks.html:44
 msgid "High priority"
 msgstr "Ưu tiên cao"
 
-#: tasks/templates/tasks/tasks.html:46
+#: tasks/templates/tasks/tasks.html:45
 msgid "Medium priority"
 msgstr "Ưu tiên trung bình"
 
-#: tasks/templates/tasks/tasks.html:47
+#: tasks/templates/tasks/tasks.html:46
 msgid "Low priority"
 msgstr "Ưu tiên thấp"
 
-#: tasks/templates/tasks/tasks.html:52
+#: tasks/templates/tasks/tasks.html:51
 msgid "Cancel"
 msgstr "Hủy bỏ"
 
-#: tasks/templates/tasks/tasks.html:53
+#: tasks/templates/tasks/tasks.html:52
 msgid "Add"
 msgstr "Thêm vào"
 
-#: tasks/templates/tasks/tasks.html:75
+#: tasks/templates/tasks/tasks.html:74
 msgid "Have a good day!"
 msgstr "Chúc bạn ngày mới tốt lành!"
 
-#: tasks/views.py:7
+#: tasks/views.py:9 tasks/views.py:12
 msgid "hide"
 msgstr "ẩn"
 

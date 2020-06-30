@@ -127,7 +127,7 @@ MIDDLEWARE += [          # locale middleware
     'django.middleware.locale.LocaleMiddleware',
 ]
 
-LANGUAGE_CODE = 'vi'  # default (fallback) language
+LANGUAGE_CODE = 'en'  # default (fallback) language
 LANGUAGES = (            # supported languages
     ('en', 'English'),
     ('vi', 'VietNam'),

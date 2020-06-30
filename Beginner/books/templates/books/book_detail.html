@@ -1,30 +1,29 @@
 {% extends "books/base.html" %}
 {% load static %}
 {% load i18n %}
+
 {% block content %}
 	{% if not book %}
-	<h1>{% trans "No book Here" %}</h1>
+	<h1 class="text-center">{% trans "No book Here" %}</h1>
 	{% else %}
-	   <div class="container">
-        <div class="row">
-            {% if book.image %}
-                <div class="col-md-5"><img src="{{book.image.url}}" alt="img"></div>
-            {% else %}
-                <div class="col-md-5"><img src="{{book.image_url}}" alt="img"></div>
-            {% endif %}
-            <div class="col-md-4"><h2>{{book.title}}</h2></div>
-            {% if book.author %}
-                <h3 >{% trans "Author" %}: <span class="text-primary"><i>{{book.author}}</i></span></h3>
-            {% endif %}
-        </div>
-        <h3 style="font-size: medium"><i>{{book.descriptions}}</i></h3>
-        </div>
-        {% if book.download %}
-            <div class="text-center"><a href="{{book.download}}">{% trans "Click here to Download the Book free" %}</a></div>
+        {% if book.iframe %}
+            {% autoescape off %}{{ book.iframe }}{% endautoescape %}</div>
         {% else %}
-            <div class="text-center text-warning">{% trans "Download unavailable" %}</div>
+            <h1 class="text-center">{% trans "contents are updating" %}</h1>
         {% endif %}
-        
 	{% endif %}
-
 {% endblock content %}
+
+{% block script %}
+        <script>
+    $(document).ready(function(){
+       $("iframe").height($("body").height());
+       $("iframe").width($("body").width());
+
+       $(window).resize(function() {
+            $("iframe").height($("body").height());
+            $("iframe").width($("body").width());
+        });
+    });
+  </script>
+{% endblock script %}

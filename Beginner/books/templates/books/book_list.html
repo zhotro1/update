@@ -1,14 +1,9 @@
 {% extends "books/base.html" %}
 {% load static %}
 {% load i18n %}
-{% block nav %}
-    <form class="form-inline my-2 my-lg-0" action="{% url 'books:book-index' %}" method="GET">
-      <input class="form-control mr-sm-2" type="search" placeholder="Find the book" aria-label="Find the book" name='q'>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
-    </form>
-{% endblock nav %}
 
 {% block content %}
+    <input type="hidden" id="myVar" name="variable" value="{{ searchnav }}">
 	{% if not books %}
 	<h1 class="jumbotron text-center text-info">{% trans "No book Searched" %}</h1>
 	{% else %}
@@ -54,3 +49,6 @@
 	{% endif %}
 
 {% endblock content %}
+{% block script %}
+    <script src="{% static "js/book.js" %}"></script>
+{% endblock script %}

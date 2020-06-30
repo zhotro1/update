@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
-<head><title>{% block title %}{% endblock title %}</title>	{% include "head.html" %} {% block head %}{% endblock head %}</head>
+<head><title>{% block title %}{% endblock title %}</title>	{% include "head.html" %} {% block head %}{% endblock head %}
+<link rel="shortcut icon" href="{% static 'img/home.png' %}">
+<link rel="stylesheet" href="{% static "css/nav.css" %}">
+</head>
 
 
   <body>
