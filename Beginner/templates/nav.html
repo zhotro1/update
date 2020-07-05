@@ -38,6 +38,9 @@
           </select>
         <input type="submit" id='hide'>
     </form>
+    {% if  user.is_authenticated%}
+        <span class="nav-item nav-link btn btn-dark" style="color:#FF1493">[ {% trans "Welcome" %} {{user.username|slice:":10" }} ]</span>
+    {% endif %}
     </div>
   </div>
 </nav>
