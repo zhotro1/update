@@ -1,2 +1,2 @@
 var myVar = $("#myVar").val();
-$("div#mynavbar").before(myVar);
+$("#mynavbar").before(myVar);

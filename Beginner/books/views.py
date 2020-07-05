@@ -2,13 +2,19 @@ from django.shortcuts import render
 from django.views import generic
 from .models import Book
 from django.utils.translation import gettext as _
+from django.views.decorators.clickjacking import xframe_options_exempt
+
+
+@xframe_options_exempt
+def ok_to_load_in_a_frame(request):
+    return HttpResponse("This page is safe to load in a frame on any site.")
 
 # Create your views here.
 class BookIndex(generic.ListView):
 	model = Book
 	context_object_name = 'books'
 	template_name = 'books/book_list.html'
-	paginate_by = 10
+	paginate_by = 6
 	ordering = ['title']
 	def get_context_data(self, **kwargs):
 	    context = super(BookIndex, self).get_context_data(**kwargs)

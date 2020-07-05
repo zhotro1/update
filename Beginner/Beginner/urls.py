@@ -33,6 +33,7 @@ urlpatterns = [
     path('accounts/', include("django.contrib.auth.urls")),
     path('books/', include('books.urls', namespace='books')),
     path('api/', include('apis.urls', namespace='apis')),
+    path('english/', include('englishapp.urls', namespace='englishapp')),
 ]
 
 if settings.DEBUG:

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-28 08:25+0000\n"
+"POT-Creation-Date: 2020-07-05 01:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,8 +26,9 @@ msgstr "Tên hiển thị"
 msgid "Email address"
 msgstr "Địa chỉ email"
 
-#: accounts/templates/accounts/login.html:9
-#: accounts/templates/accounts/login.html:14
+#: accounts/templates/accounts/login.html:4
+#: accounts/templates/accounts/login.html:12
+#: accounts/templates/accounts/login.html:17
 msgid "Login"
 msgstr "Đăng nhập"
 
@@ -43,23 +44,15 @@ msgstr "Đăng kí"
 msgid "Books Store"
 msgstr "Sách"
 
-#: books/templates/books/book_detail.html:6
+#: books/templates/books/book_detail.html:7
 #, fuzzy
 #| msgid "No book Searched"
 msgid "No book Here"
 msgstr "Không tìm thấy quyển sách này."
 
-#: books/templates/books/book_detail.html:17
-msgid "Author"
-msgstr "Tác giả"
-
-#: books/templates/books/book_detail.html:23
-msgid "Click here to Download the Book free"
-msgstr "Nhấn vào đây để tải về Sách miễn phí"
-
-#: books/templates/books/book_detail.html:25
-msgid "Download unavailable"
-msgstr "Tải xuống không có sẵn"
+#: books/templates/books/book_detail.html:12
+msgid "contents are updating"
+msgstr "Nội dung đang được nâng cấp"
 
 #: books/templates/books/book_list.html:8
 msgid "No book Searched"
@@ -89,11 +82,11 @@ msgstr "tiếp theo"
 msgid "last"
 msgstr "cuối cùng"
 
-#: books/views.py:16
+#: books/views.py:22
 msgid "Name of book"
 msgstr "Tên sách"
 
-#: books/views.py:17
+#: books/views.py:23
 msgid "Search"
 msgstr "Tìm kiếm"
 
@@ -137,7 +130,7 @@ msgstr "Thêm vào"
 msgid "Have a good day!"
 msgstr "Chúc bạn ngày mới tốt lành!"
 
-#: tasks/views.py:9 tasks/views.py:12
+#: tasks/views.py:8
 msgid "hide"
 msgstr "ẩn"
 
@@ -146,22 +139,26 @@ msgid "Happiness Home"
 msgstr "Ngôi nhà hạnh phúc"
 
 #: templates/nav.html:17
+msgid "Study English"
+msgstr "Học Tiếng Anh"
+
+#: templates/nav.html:18
 msgid "Tasks"
 msgstr "Nhiệm Vụ"
 
-#: templates/nav.html:18
+#: templates/nav.html:19
 msgid "Books"
 msgstr "Sách"
 
-#: templates/nav.html:21
+#: templates/nav.html:22
 msgid "Log out"
 msgstr "Đăng xuất"
 
-#: templates/nav.html:23
+#: templates/nav.html:24
 msgid "Log in"
 msgstr "Đăng nhập"
 
-#: templates/nav.html:24
+#: templates/nav.html:25
 msgid "Sign up"
 msgstr "Đăng kí"
 
@@ -176,3 +173,12 @@ msgstr "Đi đến kho sách"
 #: templates/thanks.html:13
 msgid "Thanks for visiting! Come back soon"
 msgstr "Cảm ơn bạn đã ghé thăm! quay lại sớm nha"
+
+#~ msgid "Author"
+#~ msgstr "Tác giả"
+
+#~ msgid "Click here to Download the Book free"
+#~ msgstr "Nhấn vào đây để tải về Sách miễn phí"
+
+#~ msgid "Download unavailable"
+#~ msgstr "Tải xuống không có sẵn"

@@ -1,0 +1,38 @@
+{% extends "englishapp/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h1 class="text-center glow" id="mycontent">{{nana}}</h1>
+            <div class="row gameboard">
+                {% for card in cards  %}
+                    <div class="col-sm-4 col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                                <img class="img-thumbnail"  src="{{card.card_pic.url}}" name="{{card.card_name}}"/>
+                                <audio id="{{card.card_name}}" src="{{card.card_voice.url}}"></audio>
+                                <div class="mycard">
+                                    <span id="span{{card.card_name}}" class="card-text text-hide" style="color: green">
+                                        <center>{{card.card_name}}</center>
+                                    </span>
+                                </div>
+                            
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        <div id="progressbar"></div>
+        <div id='progressbar1'></div>
+        <div id='progressbar2'></div>
+        <div id='progressbar3'></div>
+        <div id='progressbar4'></div>
+    </div>
+
+{% endblock content %}
+
+
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="{% static "js/englishgame.js" %}"></script>
+{% endblock script %}
+
+
+

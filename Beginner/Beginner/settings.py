@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'tasks',
     'simplesocial',
     'apis',
+    'englishapp',
 
     'bootstrap4',
     'rest_framework',
@@ -58,6 +59,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+# X_FRAME_OPTIONS = 'ALLOWALL'
+
 ROOT_URLCONF = 'Beginner.urls'
 
 TEMPLATES = [
@@ -69,6 +73,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
