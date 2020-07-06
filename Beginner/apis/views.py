@@ -14,15 +14,13 @@ from simplesocial.serializers import PersionInfoSerializer
 from englishapp.models import EnglishAppModel
 from englishapp.serializers import EnglishAppSerializer
 
-class ReadOnly(BasePermission):
-	def has_permission(self, request, view):
-		return request.method in SAFE_METHODS
+from .permistions import IsAdminOrReadOnly
 
 
 class PersionInfoApiView(APIView):
 	parser_classes = [MultiPartParser, FormParser]
 	authentication_classes= [TokenAuthentication]
-	permission_classes = [IsAuthenticated|ReadOnly]
+	permission_classes = [IsAdminOrReadOnly]
 
 	def get(self,request, format=None):
 		queryset = Persion.objects.all()
@@ -39,7 +37,7 @@ class PersionInfoApiView(APIView):
 class EnglishAppApiView(APIView):
 	parser_classes = [MultiPartParser, FormParser, FileUploadParser]
 	authentication_classes= [TokenAuthentication]
-	permission_classes = [IsAuthenticated|ReadOnly]
+	permission_classes = [IsAdminOrReadOnly]
 
 	def get(self,request, format=None):
 		queryset = EnglishAppModel.objects.all()
