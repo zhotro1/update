@@ -1,10 +1,52 @@
 $(document).ready(function() {
+    var token_user = 'Token '+token
     $("img").click(function() {
-        console.log(this.name)
         const key = $('#mycontent').text()
-        console.log(key)
         if (this.name == key) {
+          var form = new FormData();
+          form.append("answer", "dung");
+          form.append("detected_key", private_key);
+
+          var settings = {
+            "url": "http://127.0.0.1:8000/api/v1/englishscore/",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+              "Authorization": token_user,
+            },
+            "processData": false,
+            "mimeType": "multipart/form-data",
+            "contentType": false,
+            "data": form
+          };
+
+          $.ajax(settings).done(function (response) {
+            console.log(response);
+          });
             setTimeout(function(){location.reload()}, 1500);
+        } else {
+          if (document.getElementById("span"+this.name).classList.contains("text-hide")) {
+            var form = new FormData();
+            form.append("answer", "sai");
+            form.append("detected_key", private_key);
+
+            var settings = {
+              "url": "http://127.0.0.1:8000/api/v1/englishscore/",
+              "method": "POST",
+              "timeout": 0,
+              "headers": {
+                "Authorization": token_user,
+              },
+              "processData": false,
+              "mimeType": "multipart/form-data",
+              "contentType": false,
+              "data": form
+            };
+
+            $.ajax(settings).done(function (response) {
+              console.log(response);
+            });
+          }
         }
         document.getElementById("span"+this.name).className = "card-text text-show"
         var audio = document.getElementById(this.name)

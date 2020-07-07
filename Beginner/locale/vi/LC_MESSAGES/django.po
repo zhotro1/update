@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-05 01:50+0000\n"
+"POT-Creation-Date: 2020-07-07 17:08+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: accounts/forms.py:13
 msgid "Display name"
-msgstr "Tên hiển thị"
+msgstr "Tên Đăng Nhập"
 
 #: accounts/forms.py:14
 msgid "Email address"
@@ -39,10 +39,8 @@ msgid "Sign Up"
 msgstr "Đăng kí"
 
 #: books/templates/books/base.html:5
-#, fuzzy
-#| msgid "Books"
 msgid "Books Store"
-msgstr "Sách"
+msgstr "Kho Sách"
 
 #: books/templates/books/book_detail.html:7
 #, fuzzy
@@ -89,6 +87,26 @@ msgstr "Tên sách"
 #: books/views.py:23
 msgid "Search"
 msgstr "Tìm kiếm"
+
+#: englishapp/templates/englishapp/game.html:33
+msgid "Score of"
+msgstr "Điểm số của"
+
+#: englishapp/templates/englishapp/index.html:13
+msgid "Top score"
+msgstr "Bảng lưu danh"
+
+#: englishapp/templates/englishapp/index.html:16
+msgid "Top"
+msgstr "Thứ Hạng"
+
+#: englishapp/templates/englishapp/index.html:17
+msgid "Name"
+msgstr "Tên"
+
+#: englishapp/templates/englishapp/index.html:18
+msgid "Score"
+msgstr "Điểm số"
 
 #: tasks/templates/tasks/base.html:6
 msgid "To do list"
@@ -161,6 +179,10 @@ msgstr "Đăng nhập"
 #: templates/nav.html:25
 msgid "Sign up"
 msgstr "Đăng kí"
+
+#: templates/nav.html:42
+msgid "Welcome"
+msgstr "Chào mừng"
 
 #: templates/test.html:14
 msgid "You are now logged in"

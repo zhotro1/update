@@ -1,0 +1,95 @@
+.gameboard {
+	max-width: 800px;
+	margin:20px auto 0 auto;
+}
+
+.mycard {
+  padding: 0;
+}
+
+.glow {
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+#progressbar {
+  background-color: white;
+  border-radius: 13px;
+  /* (height of inner div) / 2 + padding */
+  padding: 3px;
+  max-width: 800px;
+  margin:0 auto 0 auto;
+}
+
+#progressbar>div {
+  background-color: orange;
+  width: 40%;
+  /* Adjust with JavaScript */
+  height: 20px;
+  border-radius: 10px;
+}
+body {
+	overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+	.gameboard {
+		margin:10px auto 0 auto;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.gameboard {
+		margin:0 auto 0 auto;
+	}
+	.col-sm-4 {
+    -ms-flex: 0 0 33.333333%;
+    /* flex: 0 0 33.333333%; */
+    max-width: 30.333333%;
+    margin:0 auto 0 auto;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+.progressbar {
+  width: 80%;
+  margin: 25px auto;
+  border: solid 1px #000;
+}
+.progressbar .inner {
+  height: 15px;
+  animation: progressbar-countdown;
+  /* Placeholder, this will be updated using javascript */
+  animation-duration: 40s;
+  /* We stop in the end */
+  animation-iteration-count: 1;
+  /* Stay on pause when the animation is finished finished */
+  animation-fill-mode: forwards;
+  /* We start paused, we start the animation using javascript */
+  animation-play-state: paused;
+  /* We want a linear animation, ease-out is standard */
+  animation-timing-function: linear;
+}
+@keyframes progressbar-countdown {
+  0% {
+    width: 100%;
+    background: #0F0;
+  }
+  100% {
+    width: 0%;
+    background: #F00;
+  }

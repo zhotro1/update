@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import EnglishAppView
+from .views import EnglishAppView, IndexView
 
 app_name = 'englishapp'
 
 
 urlpatterns = [
-	path('', EnglishAppView.as_view(), name='english-game'),
+	path('', IndexView.as_view(), name='english-home'),
+	path('game/', EnglishAppView.as_view(), name='english-game'),
 ]

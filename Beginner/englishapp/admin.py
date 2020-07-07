@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import EnglishAppModel
+from .models import EnglishAppModel, EnglishGameScoreModel
 
 # Register your models here.
 class EnglishAdmin(admin.ModelAdmin):
@@ -8,3 +8,4 @@ class EnglishAdmin(admin.ModelAdmin):
 	search_fields = ('card_name',)
 
 admin.site.register(EnglishAppModel, EnglishAdmin)
+admin.site.register(EnglishGameScoreModel)

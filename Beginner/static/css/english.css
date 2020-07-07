@@ -1,12 +1,3 @@
-.gameboard {
-	max-width: 800px;
-	margin:20px auto 0 auto;
-}
-
-.mycard {
-  padding: 0;
-}
-
 .glow {
   font-size: 40px;
   color: #fff;
@@ -25,71 +16,25 @@
   }
 }
 
-#progressbar {
-  background-color: white;
-  border-radius: 13px;
-  /* (height of inner div) / 2 + padding */
-  padding: 3px;
-  max-width: 800px;
-  margin:0 auto 0 auto;
+#mytable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-#progressbar>div {
-  background-color: orange;
-  width: 40%;
-  /* Adjust with JavaScript */
-  height: 20px;
-  border-radius: 10px;
-}
-body {
-	overflow: hidden;
+#mytable td, #mytable th {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
-@media screen and (max-width: 767px) {
-	.gameboard {
-		margin:10px auto 0 auto;
-	}
-}
+#mytable tr:nth-child(even){background-color: #f2f2f2;}
 
-@media screen and (max-width: 576px) {
-	.gameboard {
-		margin:0 auto 0 auto;
-	}
-	.col-sm-4 {
-    -ms-flex: 0 0 33.333333%;
-    /* flex: 0 0 33.333333%; */
-    max-width: 30.333333%;
-    margin:0 auto 0 auto;
-    padding-right: 5px;
-    padding-left: 5px;
-  }
-}
+#mytable tr:hover {background-color: #ddd;}
 
-.progressbar {
-  width: 80%;
-  margin: 25px auto;
-  border: solid 1px #000;
+#mytable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
 }
-.progressbar .inner {
-  height: 15px;
-  animation: progressbar-countdown;
-  /* Placeholder, this will be updated using javascript */
-  animation-duration: 40s;
-  /* We stop in the end */
-  animation-iteration-count: 1;
-  /* Stay on pause when the animation is finished finished */
-  animation-fill-mode: forwards;
-  /* We start paused, we start the animation using javascript */
-  animation-play-state: paused;
-  /* We want a linear animation, ease-out is standard */
-  animation-timing-function: linear;
-}
-@keyframes progressbar-countdown {
-  0% {
-    width: 100%;
-    background: #0F0;
-  }
-  100% {
-    width: 0%;
-    background: #F00;
-  }

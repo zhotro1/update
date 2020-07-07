@@ -1,5 +1,11 @@
 {% extends "englishapp/base.html" %}
 {% load static %}
+{% load i18n %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static "css/englishgame.css" %}">
+{% endblock head %}
+
 {% block content %}
     <div class="container">
         <h1 class="text-center glow" id="mycontent">{{nana}}</h1>
@@ -24,15 +30,24 @@
         <div id='progressbar2'></div>
         <div id='progressbar3'></div>
         <div id='progressbar4'></div>
+        <div class="text-center" style="color: cyan; margin-top:10px">{% trans "Score of" %} {{score}}</div>
+
+
     </div>
 
 {% endblock content %}
 
-
 {% block script %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="{% static "js/englishgame.js" %}"></script>
+<script>
+    var token = '{{token}}';
+    var private_key = '{{private_key}}';
+</script>
 {% endblock script %}
+
+
+
 
 
 

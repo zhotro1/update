@@ -6,15 +6,13 @@ from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser
 from rest_framework.exceptions import ParseError
 from rest_framework import status
 
-# Create your views here.
-
 from simplesocial.models import Persion
 from simplesocial.serializers import PersionInfoSerializer
 
-from englishapp.models import EnglishAppModel
-from englishapp.serializers import EnglishAppSerializer
+from englishapp.models import EnglishAppModel, EnglishGameScoreModel
+from englishapp.serializers import EnglishAppSerializer, EnglishGameScoreSerializer
 
-from .permistions import IsAdminOrReadOnly
+from .permistions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 
 
 class PersionInfoApiView(APIView):
@@ -45,11 +43,32 @@ class EnglishAppApiView(APIView):
 		return Response(serializer.data, status=status.HTTP_200_OK)
 
 	def post(self, request, format=None):
-		print('data', request.data)
 		serializer = EnglishAppSerializer(data = request.data)
 		if serializer.is_valid():
 			serializer.save()
 			return Response(serializer.data, status.HTTP_201_CREATED)
 		return(serializer.errors, status.HTTP_400_BAD_REQUEST)
+
+
+class EnglishGameScoreApiView(APIView):
+	parser_classes = [MultiPartParser, FormParser, FileUploadParser]
+	authentication_classes= [TokenAuthentication]
+	permission_classes = [IsAuthenticated]
+
+	def post(self,request, format=None):
+		user = request.user
+		print(request.data)
+		score = EnglishGameScoreModel.objects.get_or_create(user=user)[0]
+		serializer = EnglishGameScoreSerializer(instance =score, data = request.data)
+		if serializer.is_valid():
+			check = score.check_valid_key(request.data.get('detected_key', 'invalidkey'))
+			if check:
+				score.answer = request.data.get('answer', 'invalidanswer')
+				score.save()
+				return Response("succes updated data", status.HTTP_201_CREATED)
+			else:
+				return Response(status = status.HTTP_304_NOT_MODIFIED)
+		return(serializer.errors, status.HTTP_400_BAD_REQUEST)
+
 
 

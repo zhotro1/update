@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'simplesocial',
     'apis',
     'englishapp',
+    'blacklist',
 
     'bootstrap4',
     'rest_framework',
@@ -119,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Ho_Chi_Minh'
 
 USE_I18N = True
 
