@@ -30,7 +30,7 @@
         <div id='progressbar2'></div>
         <div id='progressbar3'></div>
         <div id='progressbar4'></div>
-        <div class="text-center" style="color: cyan; margin-top:10px">{% trans "Score of" %} {{score}}</div>
+        <div class="text-center" style="color: cyan; margin-top:10px">{% trans "Score of" %} <span style="color:#FF1493">{{score.user}}</span>: <span id="score">{{score.score}}</span><span id='scoreupdate'></span></div>
 
 
     </div>

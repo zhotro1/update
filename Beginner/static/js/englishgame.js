@@ -3,26 +3,33 @@ $(document).ready(function() {
     $("img").click(function() {
         const key = $('#mycontent').text()
         if (this.name == key) {
-          var form = new FormData();
-          form.append("answer", "dung");
-          form.append("detected_key", private_key);
+          if (document.getElementById("span"+this.name).classList.contains("text-hide")) {
+              var form = new FormData();
+              form.append("answer", "dung");
+              form.append("detected_key", private_key);
 
-          var settings = {
-            "url": "https://www.hieubn.com/api/v1/englishscore/",
-            "method": "POST",
-            "timeout": 1000,
-            "headers": {
-              "Authorization": token_user,
-            },
-            "processData": false,
-            "mimeType": "multipart/form-data",
-            "contentType": false,
-            "data": form
-          };
+              var settings = {
+                "url": "http://127.0.0.1:8000/api/v1/englishscore/",
+                "method": "POST",
+                "timeout": 1000,
+                "headers": {
+                  "Authorization": token_user,
+                },
+                  "processData": false,
+                  "mimeType": "multipart/form-data",
+                  "contentType": false,
+                  "data": form
+                };
 
-          $.ajax(settings).done(function (response) {
-            console.log(response)
-          });
+              $.ajax(settings).done(function (response) {
+                $("#scoreupdate").css("color", "green");
+                $("#scoreupdate").text("+30");
+                setTimeout(function(){$("#scoreupdate").text("")}, 500)
+                const scored = $("#score").text();
+                var scoredd = parseInt(scored) + 30
+                setTimeout(function() {$("#score").text(scoredd)}, 500)
+              });
+            };
             setTimeout(function(){location.reload()}, 1500);
         } else {
           if (document.getElementById("span"+this.name).classList.contains("text-hide")) {
@@ -31,7 +38,7 @@ $(document).ready(function() {
             form.append("detected_key", private_key);
 
             var settings = {
-              "url": "https://www.hieubn.com/api/v1/englishscore/",
+              "url": "http://127.0.0.1:8000/api/v1/englishscore/",
               "method": "POST",
               "timeout": 1000,
               "headers": {
@@ -44,7 +51,13 @@ $(document).ready(function() {
             };
 
             $.ajax(settings).done(function (response) {
-              console.log(response)
+              $("#scoreupdate").css("color", "red")
+              $("#scoreupdate").text("-5");
+              setTimeout(function(){$("#scoreupdate").text("")}, 500)
+              const scores = $("#score").text();
+              var scoress = parseInt(scores) - 5
+              setTimeout(function() {$("#score").text(scoress)}, 500)
+
             });
           }
         }
