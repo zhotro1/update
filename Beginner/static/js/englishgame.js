@@ -10,7 +10,7 @@ $(document).ready(function() {
           var settings = {
             "url": "http://www.hieubn.com/api/v1/englishscore/",
             "method": "POST",
-            "timeout": 1500,
+            "timeout": 1000,
             "headers": {
               "Authorization": token_user,
             },
@@ -21,6 +21,7 @@ $(document).ready(function() {
           };
 
           $.ajax(settings).done(function (response) {
+            console.log(response)
           });
             setTimeout(function(){location.reload()}, 1500);
         } else {
@@ -32,7 +33,7 @@ $(document).ready(function() {
             var settings = {
               "url": "http://www.hieubn.com/api/v1/englishscore/",
               "method": "POST",
-              "timeout": 1500,
+              "timeout": 1000,
               "headers": {
                 "Authorization": token_user,
               },
@@ -43,6 +44,7 @@ $(document).ready(function() {
             };
 
             $.ajax(settings).done(function (response) {
+              console.log(response)
             });
           }
         }
