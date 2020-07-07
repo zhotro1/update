@@ -10,7 +10,7 @@ $(document).ready(function() {
           var settings = {
             "url": "http://www.hieubn.com/api/v1/englishscore/",
             "method": "POST",
-            "timeout": 0,
+            "timeout": 1000,
             "headers": {
               "Authorization": token_user,
             },
@@ -32,7 +32,7 @@ $(document).ready(function() {
             var settings = {
               "url": "http://www.hieubn.com/api/v1/englishscore/",
               "method": "POST",
-              "timeout": 0,
+              "timeout": 1000,
               "headers": {
                 "Authorization": token_user,
               },

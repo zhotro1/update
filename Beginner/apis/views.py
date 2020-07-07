@@ -57,7 +57,6 @@ class EnglishGameScoreApiView(APIView):
 
 	def post(self,request, format=None):
 		user = request.user
-		print(request.data)
 		score = EnglishGameScoreModel.objects.get_or_create(user=user)[0]
 		serializer = EnglishGameScoreSerializer(instance =score, data = request.data)
 		if serializer.is_valid():
