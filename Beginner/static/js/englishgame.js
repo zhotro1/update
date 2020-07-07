@@ -8,7 +8,7 @@ $(document).ready(function() {
           form.append("detected_key", private_key);
 
           var settings = {
-            "url": "http://www.hieubn.com/api/v1/englishscore/",
+            "url": "https://www.hieubn.com/api/v1/englishscore/",
             "method": "POST",
             "timeout": 1000,
             "headers": {
@@ -31,7 +31,7 @@ $(document).ready(function() {
             form.append("detected_key", private_key);
 
             var settings = {
-              "url": "http://www.hieubn.com/api/v1/englishscore/",
+              "url": "https://www.hieubn.com/api/v1/englishscore/",
               "method": "POST",
               "timeout": 1000,
               "headers": {
