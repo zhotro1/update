@@ -8,7 +8,7 @@ $(document).ready(function() {
           form.append("detected_key", private_key);
 
           var settings = {
-            "url": "http://127.0.0.1:8000/api/v1/englishscore/",
+            "url": "http://www.hieubn.com/api/v1/englishscore/",
             "method": "POST",
             "timeout": 0,
             "headers": {
@@ -21,7 +21,6 @@ $(document).ready(function() {
           };
 
           $.ajax(settings).done(function (response) {
-            console.log(response);
           });
             setTimeout(function(){location.reload()}, 1500);
         } else {
@@ -31,7 +30,7 @@ $(document).ready(function() {
             form.append("detected_key", private_key);
 
             var settings = {
-              "url": "http://127.0.0.1:8000/api/v1/englishscore/",
+              "url": "http://www.hieubn.com/api/v1/englishscore/",
               "method": "POST",
               "timeout": 0,
               "headers": {
@@ -44,7 +43,6 @@ $(document).ready(function() {
             };
 
             $.ajax(settings).done(function (response) {
-              console.log(response);
             });
           }
         }
