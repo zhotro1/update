@@ -149,7 +149,7 @@ function renderData(context) {
                   var settings = {
                     "url": "https://www.hieubn.com/api/v1/englishscore/",
                     "method": "POST",
-                    "timeout": 1000,
+                    "timeout": 0,
                     "headers": {
                       "Authorization": usertoken,
                     },
@@ -165,7 +165,7 @@ function renderData(context) {
               }
 
             $(".inner").remove()
-            setTimeout(function(){loaddata(renderData);}, 1500);
+            setTimeout(function(){loaddata(renderData);}, 100);
         } else {
           if (!(typeof(text) != 'undefined' && text != null)) {
             if (usertoken != 'Token '){
@@ -182,7 +182,7 @@ function renderData(context) {
               var settings = {
                 "url": "https://www.hieubn.com/api/v1/englishscore/",
                 "method": "POST",
-                "timeout": 1000,
+                "timeout": 0,
                 "headers": {
                   "Authorization": usertoken,
                 },
