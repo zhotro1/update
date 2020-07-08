@@ -86,7 +86,7 @@ function loaddata(renderData) {
         var settings = {
       "url": "https://www.hieubn.com/api/v1/englishapp/",
       "method": "GET",
-      "timeout": 1000,
+      "timeout": 0,
       "headers": {
         "Authorization": usertoken
       },
@@ -95,7 +95,7 @@ function loaddata(renderData) {
         var settings = {
       "url": "hhttps://www.hieubn.com/api/v1/englishapp/",
       "method": "GET",
-      "timeout": 1000,
+      "timeout": 0,
     };
   }
 
