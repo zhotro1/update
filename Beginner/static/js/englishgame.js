@@ -165,7 +165,7 @@ function renderData(context) {
               }
 
             $(".inner").remove()
-            setTimeout(function(){loaddata(renderData);}, 100);
+            setTimeout(function(){loaddata(renderData);}, 1000);
         } else {
           if (!(typeof(text) != 'undefined' && text != null)) {
             if (usertoken != 'Token '){
