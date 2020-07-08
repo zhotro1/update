@@ -5,7 +5,7 @@ $(document).ready(function() {
         const key = $('#mycontent').text()
         if (this.name == key) {
           if (document.getElementById("span"+this.name).classList.contains("text-hide")) {
-              document.getElementById("card-"+this.name).className = "mx-auto col-md-5";
+              document.getElementById("card-"+this.name).className = "mx-auto col-md-4";
               $("div.col-sm-4.col-md-4").remove()
               $("#scoreupdate").css("color", "green");
               $("#scoreupdate").text("+30");
