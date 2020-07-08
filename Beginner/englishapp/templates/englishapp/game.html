@@ -8,43 +8,26 @@
 
 {% block content %}
     <div class="container">
-        <h1 class="text-center glow" id="mycontent">{{nana}}</h1>
-            <div class="row gameboard">
-                {% for card in cards  %}
-
-                    <div class="col-sm-4 col-md-4" id="card-{{card.card_name}}">
-                        <div class="card mb-4 shadow-sm">
-                                <img id="img{{card.card_name}}" class="img-thumbnail"  src="{{card.card_pic.url}}" name="{{card.card_name}}"/>
-                                <audio id="{{card.card_name}}" src="{{card.card_voice.url}}"></audio>
-                                <div class="mycard">
-                                    <span id="span{{card.card_name}}" class="card-text text-hide" style="color: green">
-                                        <center>{{card.card_name}}</center>
-                                    </span>
-                                </div>
-                            
-                        </div>
-                    </div>
-                {% endfor %}
+        <h1 class="text-center glow" id="myanswer"></h1>
+            <div class="row gameboard" id='gameboard'>
             </div>
         <div id="progressbar"></div>
-        <div class="text-center" style="color: cyan; margin-top:10px">{% trans "Score of" %} <span style="color:#FF1493">{{score.user}}</span>: <span id="score">{{score.score}}</span><span id='scoreupdate'></span></div>
+        {% if user.is_authenticated %}
+            <div class="text-center" style="color: cyan; margin-top:10px">{% trans "Score of" %} <span style="color:#FF1493">{{request.user.username}}</span>: <span id="score"></span><span id='scoreupdate'></span></div>
+        {% else %}
+            <div class="text-info text-center"><a href="{% url 'accounts:login' %}">{% trans "Log in to record your score" %}</a></div>
+        {% endif %}
 
 
     </div>
-<canvas id='canvas'></canvas>
 {% endblock content %}
 
 {% block script %}
     <script>
         $("body").css("overflow", "hidden");
-    </script>
-    
-    <script src="{% static "js/starnight.js" %}"></script>
+    </script>    
 <script src="{% static "js/englishgame.js" %}"></script>
-<script>
-    var token = '{{token}}';
-    var private_key = '{{private_key}}';
-</script>
+<script>var usertoken = 'Token '+'{{token}}';</script>
 {% endblock script %}
 
 

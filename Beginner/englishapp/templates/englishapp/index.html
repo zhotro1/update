@@ -1,14 +1,14 @@
 {% extends "englishapp/base.html" %}
 {% load static %}
 {% load i18n %}
-{% load my_tag %}
+
 
 {% block head %}
     <link rel="stylesheet" href="{% static "css/english.css" %}">
 {% endblock head %}
 
 {% block content %}
-	<h1 class="text-center glow">Today: <span id="datepicker"></span></h1>
+	<h1 class="text-center">{% trans "Today" %}: <span id="datepicker"></span></h1>
 	<div class="jumbotron" style="max-width:500px; margin:0 auto; color: red; padding-top:0.5rem">
 		<h2 class="text-center" style="padding-top:0">{% trans "Top score" %} (<span id="timeupdate"></span>)</h2>
 		<table id="mytable">
@@ -19,7 +19,7 @@
 		  	</tr>
 		  	{% for top in top10 %}
 	    	<tr>
-	    		<td>{{top10|index:top}}</td>
+	    		<td class="counterCell"></td>
 			    <td>{{top.user|slice:":15"}}</td>
 			    <td>{{top.score}}</td>
   			</tr>
