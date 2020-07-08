@@ -167,7 +167,7 @@ function renderData(context) {
               }
 
             $(".inner").remove()
-            audio.onended = function(){loaddata(renderData)};
+            audio.onended = setTimeout(function(){loaddata(renderData)}, 500);
         } else {
           if (!(typeof(text) != 'undefined' && text != null)) {
             if (usertoken != 'Token '){
