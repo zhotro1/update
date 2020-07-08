@@ -92,8 +92,8 @@ function loaddata(renderData) {
       },
     };
   } else {
-        var settings = {
-      "url": "hhttps://www.hieubn.com/api/v1/englishapp/",
+      var settings = {
+      "url": "https://www.hieubn.com/api/v1/englishapp/",
       "method": "GET",
       "timeout": 0,
     };
@@ -102,7 +102,7 @@ function loaddata(renderData) {
   $.ajax(settings).done(function (context) {
     renderData(context)
   }).fail(function() {
-      loaddata(renderData)
+      setTimeout(function() {loaddata(renderData)}, 500)
   });
 }
 
