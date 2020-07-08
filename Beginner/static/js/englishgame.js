@@ -37,7 +37,6 @@ $(document).ready(function() {
             setTimeout(function(){location.reload()}, 1500);
         } else {
           if (document.getElementById("span"+this.name).classList.contains("text-hide")) {
-            setTimeout(function(){card.remove()}, 1000)
             $("#scoreupdate").css("color", "red")
             $("#scoreupdate").text("-5");
             setTimeout(function(){$("#scoreupdate").text("")}, 500)
