@@ -128,6 +128,8 @@ function renderData(context) {
         const key = $('#myanswer').text()
         var value = document.getElementById('value-'+this.name).value
         var text = document.getElementById('span-'+this.name)
+        var audio = document.getElementById('audio-'+this.name);
+        audio.play();
 
         if (value == key) {
           if (!(typeof(text) != 'undefined' && text != null)) {
@@ -165,7 +167,7 @@ function renderData(context) {
               }
 
             $(".inner").remove()
-            setTimeout(function(){loaddata(renderData);}, 1000);
+            audio.onended = function(){loaddata(renderData)};
         } else {
           if (!(typeof(text) != 'undefined' && text != null)) {
             if (usertoken != 'Token '){
@@ -200,8 +202,6 @@ function renderData(context) {
         }
         var span = `<span id="span-`+this.name+`" class="card-text" style="color: green">`+`<center>`+value+`</center>`+`</span>`
         $('#text-'+this.name).html(span)
-        var audio = document.getElementById('audio-'+this.name);
-        audio.play();
         
     });
 }
