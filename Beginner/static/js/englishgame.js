@@ -93,7 +93,7 @@ function loaddata(renderData) {
     };
   } else {
         var settings = {
-      "url": "https://www.hieubn.com/api/v1/englishapp/",
+      "url": "hhttps://www.hieubn.com/api/v1/englishapp/",
       "method": "GET",
       "timeout": 1000,
     };
@@ -101,10 +101,13 @@ function loaddata(renderData) {
 
   $.ajax(settings).done(function (context) {
     renderData(context)
+  }).fail(function() {
+      loaddata(renderData)
   });
 }
 
 function renderData(context) {
+
   $("#gameboard").html(html)
 
   createProgressbar('progressbar', '20s', function() {
