@@ -11,9 +11,10 @@
         <h1 class="text-center glow" id="mycontent">{{nana}}</h1>
             <div class="row gameboard">
                 {% for card in cards  %}
-                    <div class="col-sm-4 col-md-4">
+
+                    <div class="col-sm-4 col-md-4" id="card-{{card.card_name}}">
                         <div class="card mb-4 shadow-sm">
-                                <img class="img-thumbnail"  src="{{card.card_pic.url}}" name="{{card.card_name}}"/>
+                                <img id="img{{card.card_name}}" class="img-thumbnail"  src="{{card.card_pic.url}}" name="{{card.card_name}}"/>
                                 <audio id="{{card.card_name}}" src="{{card.card_voice.url}}"></audio>
                                 <div class="mycard">
                                     <span id="span{{card.card_name}}" class="card-text text-hide" style="color: green">
@@ -26,19 +27,19 @@
                 {% endfor %}
             </div>
         <div id="progressbar"></div>
-        <div id='progressbar1'></div>
-        <div id='progressbar2'></div>
-        <div id='progressbar3'></div>
-        <div id='progressbar4'></div>
         <div class="text-center" style="color: cyan; margin-top:10px">{% trans "Score of" %} <span style="color:#FF1493">{{score.user}}</span>: <span id="score">{{score.score}}</span><span id='scoreupdate'></span></div>
 
 
     </div>
-
+<canvas id='canvas'></canvas>
 {% endblock content %}
 
 {% block script %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $("body").css("overflow", "hidden");
+    </script>
+    
+    <script src="{% static "js/starnight.js" %}"></script>
 <script src="{% static "js/englishgame.js" %}"></script>
 <script>
     var token = '{{token}}';

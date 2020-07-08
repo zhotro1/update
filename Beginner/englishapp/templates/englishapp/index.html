@@ -8,9 +8,9 @@
 {% endblock head %}
 
 {% block content %}
-	<h1 class="text-center glow">English ==> easy to study</h1>
+	<h1 class="text-center glow">Today: <span id="datepicker"></span></h1>
 	<div class="jumbotron" style="max-width:500px; margin:0 auto; color: red; padding-top:0.5rem">
-		<h2 class="text-center" style="padding-top:0">{% trans "Top score" %}</h2>
+		<h2 class="text-center" style="padding-top:0">{% trans "Top score" %} (<span id="timeupdate"></span>)</h2>
 		<table id="mytable">
 		  	<tr>
 			    <th>{% trans "Top" %}</th>
@@ -29,6 +29,17 @@
 	<center><div onclick="window.location='{% url 'englishapp:english-game' %}'" class="btn btn-primary" style="background-color:gray; min-width:100%; margin-top: 20px; color:cyan">play game</div></center>
 	</div>
 
-	
+
+	<canvas id='canvas'></canvas>
 {% endblock content %}
-<h1>English home page</h1>
+{% block script %}
+	<script>
+		var now = new Date().toLocaleString("vi", {timeZone: "Asia/Ho_Chi_Minh"});
+		now = now.split(",")
+		$("body").css("overflow", "hidden")
+		$("#datepicker").text(now[1]);
+		$("#timeupdate").text(now[0]);
+	</script>
+	
+	<script src="{% static "js/starnight.js" %}"></script>
+{% endblock script %}

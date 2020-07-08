@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load i18n %}
 {% block title %}
 	{% trans "Login" %}
@@ -14,8 +15,14 @@
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
-      <button type="submit" class="btn btn-primary text-center">{% trans "Login" %}</button>
+      <button type="submit" class="btn btn-primary text-center" style="margin:0 auto 0 auto">{% trans "Login" %}</button>
     {% endbuttons %}
-  </form>
+    <a href="{% url 'accounts:signup' %}">{% trans "Click here to register" %}</a>
+  </form>	
 </div>
+<canvas id="canvas"></canvas>
 {% endblock %}
+{% block script %}
+	<script>$("body").css("overflow", "hidden");</script>
+	<script src="{% static "js/starnight.js" %}"></script>
+{% endblock script %}

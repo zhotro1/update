@@ -38,3 +38,7 @@
   background-color: #4CAF50;
   color: white;
 }
+
+#topscoretable {
+  background-image: linear-gradient(#667eea, #764ba2);
+}

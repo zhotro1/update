@@ -1,9 +1,19 @@
 $(document).ready(function() {
     var token_user = 'Token '+token
     $("img").click(function() {
+        var card= document.getElementById('card-'+this.name)
         const key = $('#mycontent').text()
         if (this.name == key) {
           if (document.getElementById("span"+this.name).classList.contains("text-hide")) {
+              document.getElementById("card-"+this.name).className = "mx-auto col-md-5";
+              $("div.col-sm-4.col-md-4").remove()
+              $("#scoreupdate").css("color", "green");
+              $("#scoreupdate").text("+30");
+              setTimeout(function(){$("#scoreupdate").text("")}, 500)
+              const scored = $("#score").text();
+              var scoredd = parseInt(scored) + 30
+              setTimeout(function() {$("#score").text(scoredd)}, 500)
+
               var form = new FormData();
               form.append("answer", "dung");
               form.append("detected_key", private_key);
@@ -22,17 +32,18 @@ $(document).ready(function() {
                 };
 
               $.ajax(settings).done(function (response) {
-                $("#scoreupdate").css("color", "green");
-                $("#scoreupdate").text("+30");
-                setTimeout(function(){$("#scoreupdate").text("")}, 500)
-                const scored = $("#score").text();
-                var scoredd = parseInt(scored) + 30
-                setTimeout(function() {$("#score").text(scoredd)}, 500)
               });
             };
             setTimeout(function(){location.reload()}, 1500);
         } else {
           if (document.getElementById("span"+this.name).classList.contains("text-hide")) {
+            setTimeout(function(){card.remove()}, 1000)
+            $("#scoreupdate").css("color", "red")
+            $("#scoreupdate").text("-5");
+            setTimeout(function(){$("#scoreupdate").text("")}, 500)
+            const scores = $("#score").text();
+            var scoress = parseInt(scores) - 5
+            setTimeout(function() {$("#score").text(scoress)}, 500)
             var form = new FormData();
             form.append("answer", "sai");
             form.append("detected_key", private_key);
@@ -51,19 +62,16 @@ $(document).ready(function() {
             };
 
             $.ajax(settings).done(function (response) {
-              $("#scoreupdate").css("color", "red")
-              $("#scoreupdate").text("-5");
-              setTimeout(function(){$("#scoreupdate").text("")}, 500)
-              const scores = $("#score").text();
-              var scoress = parseInt(scores) - 5
-              setTimeout(function() {$("#score").text(scoress)}, 500)
 
             });
           }
         }
-        document.getElementById("span"+this.name).className = "card-text text-show"
-        var audio = document.getElementById(this.name)
-        audio.play()
+        document.getElementById("span"+this.name).className = "card-text text-show";
+        var audio = document.getElementById(this.name);
+        audio.play();
+        
+        
+        ;
     })
 
 });
