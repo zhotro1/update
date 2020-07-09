@@ -63,7 +63,7 @@ class EnglishGameScoreModel(models.Model):
 			self.detected_d += 1
 			self.time_update_score = datetime.datetime.now().timestamp()
 		elif (self.answer == 'sai') and (self.detected_s < 5):
-			self.score -= 5
+			self.score -= 20
 			self.detected_s += 1
 			self.time_update_score = datetime.datetime.now().timestamp()
 		super().save(*args, **kwargs)

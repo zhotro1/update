@@ -109,8 +109,9 @@ function loaddata(renderData) {
 function renderData(context) {
 
   $("#gameboard").html(html)
+  $(".inner").remove()
 
-  createProgressbar('progressbar', '20s', function() {
+  createProgressbar('progressbar', '10s', function() {
     loaddata(renderData);
     $(".inner").remove()
   });
@@ -172,10 +173,10 @@ function renderData(context) {
           if (!(typeof(text) != 'undefined' && text != null)) {
             if (usertoken != 'Token '){
               $("#scoreupdate").css("color", "red")
-              $("#scoreupdate").text("-5");
+              $("#scoreupdate").text("-20");
               setTimeout(function(){$("#scoreupdate").text("")}, 500)
               const scores = $("#score").text();
-              var scoress = parseInt(scores) - 5
+              var scoress = parseInt(scores) - 20
               setTimeout(function() {$("#score").text(scoress)}, 500)
               var form = new FormData();
               form.append("answer", "sai");
