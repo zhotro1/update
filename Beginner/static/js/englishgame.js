@@ -1,13 +1,19 @@
 $(document).ready(function() {
-    loaddata(renderData);
+  var test = true
+  window.urltogetdata = "https://www.hieubn.com/api/v1/englishapp/"
+  window.urltoupdatescore = "https://www.hieubn.com/api/v1/englishscore/"
+  if (test) {window.urltogetdata = "http://127.0.0.1:8000/api/v1/englishapp/";
+    window.urltoupdatescore = "http://127.0.0.1:8000/api/v1/englishscore/"
+  };
+  loaddata(renderData);
 });
 
 function createProgressbar(id, duration, callback) {
   var progressbar = document.getElementById(id);
   progressbar.className = 'progressbar';
-  var progressbarinner = document.createElement('div');
-  progressbarinner.className = 'inner';
-  progressbarinner.style.animationDuration = duration;
+  window.progressbarinner = document.createElement('div');
+  window.progressbarinner.className = 'inner';
+  window.progressbarinner.style.animationDuration = duration;
 
   if (typeof(callback) === 'function') {
     progressbarinner.addEventListener('animationend', callback);
@@ -15,11 +21,11 @@ function createProgressbar(id, duration, callback) {
 
   progressbar.appendChild(progressbarinner);
 
-  progressbarinner.style.animationPlayState = 'running';
+  window.progressbarinner.style.animationPlayState = 'running';
 }
 
 
-var html = `<div class="col-sm-4 col-md-4" id="card-0">
+const html = `<div class="col-sm-4 col-md-4" id="card-0">
     <div class="card mb-4 shadow-sm">
         <img id="img-card-0" class="img-thumbnail"  src="" name="card-0"/>
         <audio id="audio-card-0" src=""></audio>
@@ -84,7 +90,7 @@ var html = `<div class="col-sm-4 col-md-4" id="card-0">
 function loaddata(renderData) {
   if (usertoken !='Token ') {
         var settings = {
-      "url": "https://www.hieubn.com/api/v1/englishapp/",
+      "url": window.urltogetdata,
       "method": "GET",
       "timeout": 0,
       "headers": {
@@ -93,7 +99,7 @@ function loaddata(renderData) {
     };
   } else {
       var settings = {
-      "url": "https://www.hieubn.com/api/v1/englishapp/",
+      "url": window.urltogetdata,
       "method": "GET",
       "timeout": 0,
     };
@@ -102,12 +108,12 @@ function loaddata(renderData) {
   $.ajax(settings).done(function (context) {
     renderData(context)
   }).fail(function() {
-      setTimeout(function() {loaddata(renderData)}, 500)
+      $("#gameboard").html(`<div class="text-info mx-auto">Loading data...</div>`)
+      setTimeout(function() {loaddata(renderData)}, 1000)
   });
 }
 
 function renderData(context) {
-
   $("#gameboard").html(html)
   $(".inner").remove()
 
@@ -150,7 +156,7 @@ function renderData(context) {
                   form.append("detected_key", window.private_key);
 
                   var settings = {
-                    "url": "https://www.hieubn.com/api/v1/englishscore/",
+                    "url": window.urltoupdatescore,
                     "method": "POST",
                     "timeout": 0,
                     "headers": {
@@ -167,8 +173,11 @@ function renderData(context) {
                 };
               }
 
-            $(".inner").remove()
-            audio.onended = setTimeout(function(){loaddata(renderData)}, 500);
+            window.progressbarinner.style.animationPlayState = 'paused';
+            audio.addEventListener('ended',myHandler,false);
+            function myHandler(e) {
+              setTimeout(function(){loaddata(renderData)}, 500)
+            }
         } else {
           if (!(typeof(text) != 'undefined' && text != null)) {
             if (usertoken != 'Token '){
@@ -183,7 +192,7 @@ function renderData(context) {
               form.append("detected_key", window.private_key);
 
               var settings = {
-                "url": "https://www.hieubn.com/api/v1/englishscore/",
+                "url": window.urltoupdatescore,
                 "method": "POST",
                 "timeout": 0,
                 "headers": {
@@ -206,3 +215,8 @@ function renderData(context) {
         
     });
 }
+
+// function showPage() {
+//   document.getElementById("loader").style.display = "none";
+
+// }

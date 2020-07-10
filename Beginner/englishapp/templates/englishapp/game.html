@@ -4,13 +4,38 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static "css/englishgame.css" %}">
+    <style>
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    </style>
 {% endblock head %}
 
 {% block content %}
+
     <div class="container">
+
         <h1 class="text-center glow" id="myanswer"></h1>
-            <div class="row gameboard" id='gameboard'>
-            </div>
+        
+        <div class="row gameboard" id='gameboard'>
+        </div>
         <div id="progressbar"></div>
         {% if user.is_authenticated %}
             <div class="text-center" style="color: cyan; margin-top:10px">{% trans "Score of" %} <span style="color:#FF1493">{{request.user.username}}</span>: <span id="score"></span><span id='scoreupdate'></span></div>
@@ -18,8 +43,8 @@
             <div class="text-info text-center"><a href="{% url 'accounts:login' %}">{% trans "Log in to record your score" %}</a></div>
         {% endif %}
 
-
     </div>
+
 {% endblock content %}
 
 {% block script %}
