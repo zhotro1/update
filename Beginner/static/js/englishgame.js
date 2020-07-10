@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var test = true
+  var test = false
   window.urltogetdata = "https://www.hieubn.com/api/v1/englishapp/"
   window.urltoupdatescore = "https://www.hieubn.com/api/v1/englishscore/"
   if (test) {window.urltogetdata = "http://127.0.0.1:8000/api/v1/englishapp/";
