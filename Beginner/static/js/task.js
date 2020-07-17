@@ -1,7 +1,4 @@
 $("body").css("background-image", "url('/static/img/wa.png')");
-var myVar = $("#myVar").val();
-
-$("div#mynavbar").after(myVar);
 
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
@@ -14,15 +11,14 @@ $(function () {
 
 });
 
-$("#annav").click(function(){
-    $("nav").remove();
-});
 
 function checkForm(){
     var id = '_' + Math.random().toString(36).substr(2, 9);
     var idd = '_' + Math.random().toString(36).substr(2, 9);
     var iddd = '_' + Math.random().toString(36).substr(2, 9);
     var title =document.getElementById('id_title').value;
+    if (!title) {alert("task must have a title!")}
+    else {
     var descriptions =document.getElementById('id_description').value;
     var priority =document.getElementById('id_priority').value;
     var html = `<div id=`+iddd.toString()+` class="card btn-block" style="margin-top: 10px; border-radius: 5px; padding: 10px; background-color: #fafafa">
@@ -69,7 +65,7 @@ function checkForm(){
             );
     };
     
-};
+};};
 
 function hoanthanh(id) {
   var st = document.getElementById(id).style.textDecoration;

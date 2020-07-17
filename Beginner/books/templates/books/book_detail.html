@@ -1,31 +1,32 @@
-{% extends "books/base.html" %}
 {% load static %}
-{% load i18n %}
 
-{% block content %}
-	{% if not book %}
-	<h1 class="text-center">{% trans "No book Here" %}</h1>
-	{% else %}
-        {% if book.iframe %}
-            {% autoescape off %}{{ book.iframe }}{% endautoescape %}
-        {% else %}
-            <h1 class="text-center">{% trans "contents are updating" %}</h1>
-        {% endif %}
-	{% endif %}
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body> 
+  <div id="content">
+  {% autoescape off %}{{ book.iframe }}{% endautoescape %}
+</div>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <script>
+    $(".mobile_overlay_btn").remove();
+    $(".toolbar_scribd_logo").remove();
+    $(".zoom_btn").remove();
+    $(".icon").remove();
+    $(".share_btn").remove();
 
-{% block script %}
-    <script>
-        $(document).ready(function(){
-           $("iframe").height($(window).height());
-           $("iframe").width($("body").width());
 
-           $(window).resize(function() {
-                $("iframe").height($(window).height());
-                $("iframe").width($("body").width());
-            });
-        });
-        $("body").css("overflow", "hidden")
-        $("iframe").css("overflow", "auto")
   </script>
-{% endblock script %}
+<script src="{% static "js/book.js" %}"></script>
+</body>
+</html>
+
+
+
+
+
+
+

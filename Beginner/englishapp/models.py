@@ -52,7 +52,7 @@ class EnglishGameScoreModel(models.Model):
 
 	def check_valid_key(self, key):
 		now = datetime.datetime.now().timestamp()
-		if ((now - self.time_update_key) < 31) and (self.detected_key == key):
+		if ((now - self.time_update_key) < 12) and (self.detected_key == key):
 			return True
 		else:
 			return False

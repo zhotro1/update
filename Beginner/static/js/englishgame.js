@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  var test = false
-  window.urltogetdata = "https://www.hieubn.com/api/v1/englishapp/"
+  var test = 1
+  window.urltogetdata = "https://www.hieubn.com/api/v1/englishgame/"
   window.urltoupdatescore = "https://www.hieubn.com/api/v1/englishscore/"
-  if (test) {window.urltogetdata = "http://127.0.0.1:8000/api/v1/englishapp/";
+  if (test) {window.urltogetdata = "http://127.0.0.1:8000/api/v1/englishgame/";
     window.urltoupdatescore = "http://127.0.0.1:8000/api/v1/englishscore/"
   };
   loaddata(renderData);
@@ -128,95 +128,89 @@ function renderData(context) {
   for (i=0;i<=5;i++) {
     $("#img-card-"+i).attr("src", context['cards'][i]['card_pic'])
     $("#audio-card-"+i).attr("src", context['cards'][i]['card_voice'])
-    $("#span-card-"+i).text(context['cards'][i]['card_name'])
     $("#value-card-"+i).attr("value", context['cards'][i]['card_name'])
   }
-      $("img").click(function() {
-        const key = $('#myanswer').text()
-        var value = document.getElementById('value-'+this.name).value
-        var text = document.getElementById('span-'+this.name)
-        var audio = document.getElementById('audio-'+this.name);
-        audio.play();
+    $("img").click(function() {
+      const key = $('#myanswer').text()
+      var value = document.getElementById('value-'+this.name).value
+      var text = document.getElementById('span-'+this.name)
+      var audio = document.getElementById('audio-'+this.name);
+      audio.play();
 
-        if (value == key) {
-          if (!(typeof(text) != 'undefined' && text != null)) {
-              document.getElementById(this.name).className = "mx-auto col-md-4";
-              $("div.col-sm-4.col-md-4").remove()
+      if (value == key) {
+        if (!(typeof(text) != 'undefined' && text != null)) {
+            document.getElementById(this.name).className = "mx-auto col-md-4";
+            $("div.col-sm-4.col-md-4").remove()
 
-              if (usertoken != 'Token ') {
-                  $("#scoreupdate").css("color", "green");
-                  $("#scoreupdate").text("+30");
-                  setTimeout(function(){$("#scoreupdate").text("")}, 500)
-                  const scored = $("#score").text();
-                  var scoredd = parseInt(scored) + 30
-                  setTimeout(function() {$("#score").text(scoredd)}, 500)
+            if (usertoken != 'Token ') {
+                $("#scoreupdate").css("color", "green");
+                $("#scoreupdate").text("+30");
+                setTimeout(function(){$("#scoreupdate").text("")}, 500)
+                const scored = $("#score").text();
+                var scoredd = parseInt(scored) + 30
+                setTimeout(function() {$("#score").text(scoredd)}, 500)
 
-                  var form = new FormData();
-                  form.append("answer", "dung");
-                  form.append("detected_key", window.private_key);
+                var form = new FormData();
+                form.append("answer", "dung");
+                form.append("detected_key", window.private_key);
 
-                  var settings = {
-                    "url": window.urltoupdatescore,
-                    "method": "POST",
-                    "timeout": 0,
-                    "headers": {
-                      "Authorization": usertoken,
-                    },
-                      "processData": false,
-                      "mimeType": "multipart/form-data",
-                      "contentType": false,
-                      "data": form
-                    };
+                var settings = {
+                  "url": window.urltoupdatescore,
+                  "method": "POST",
+                  "timeout": 0,
+                  "headers": {
+                    "Authorization": usertoken,
+                  },
+                    "processData": false,
+                    "mimeType": "multipart/form-data",
+                    "contentType": false,
+                    "data": form
+                  };
 
-                  $.ajax(settings).done(function (response) {
-                  });
-                };
-              }
-
-            window.progressbarinner.style.animationPlayState = 'paused';
-            audio.addEventListener('ended',myHandler,false);
-            function myHandler(e) {
-              setTimeout(function(){loaddata(renderData)}, 500)
-            }
-        } else {
-          if (!(typeof(text) != 'undefined' && text != null)) {
-            if (usertoken != 'Token '){
-              $("#scoreupdate").css("color", "red")
-              $("#scoreupdate").text("-20");
-              setTimeout(function(){$("#scoreupdate").text("")}, 500)
-              const scores = $("#score").text();
-              var scoress = parseInt(scores) - 20
-              setTimeout(function() {$("#score").text(scoress)}, 500)
-              var form = new FormData();
-              form.append("answer", "sai");
-              form.append("detected_key", window.private_key);
-
-              var settings = {
-                "url": window.urltoupdatescore,
-                "method": "POST",
-                "timeout": 0,
-                "headers": {
-                  "Authorization": usertoken,
-                },
-                "processData": false,
-                "mimeType": "multipart/form-data",
-                "contentType": false,
-                "data": form
+                $.ajax(settings).done(function (response) {
+                });
               };
-
-              $.ajax(settings).done(function (response) {
-
-              });
             }
+
+          window.progressbarinner.style.animationPlayState = 'paused';
+          audio.addEventListener('ended',myHandler,false);
+          function myHandler(e) {
+            setTimeout(function(){loaddata(renderData)}, 500)
+          }
+      } else {
+        if (!(typeof(text) != 'undefined' && text != null)) {
+          if (usertoken != 'Token '){
+            $("#scoreupdate").css("color", "red")
+            $("#scoreupdate").text("-20");
+            setTimeout(function(){$("#scoreupdate").text("")}, 500)
+            const scores = $("#score").text();
+            var scoress = parseInt(scores) - 20
+            setTimeout(function() {$("#score").text(scoress)}, 500)
+            var form = new FormData();
+            form.append("answer", "sai");
+            form.append("detected_key", window.private_key);
+
+            var settings = {
+              "url": window.urltoupdatescore,
+              "method": "POST",
+              "timeout": 0,
+              "headers": {
+                "Authorization": usertoken,
+              },
+              "processData": false,
+              "mimeType": "multipart/form-data",
+              "contentType": false,
+              "data": form
+            };
+
+            $.ajax(settings).done(function (response) {
+
+            });
           }
         }
-        var span = `<span id="span-`+this.name+`" class="card-text" style="color: green">`+`<center>`+value+`</center>`+`</span>`
-        $('#text-'+this.name).html(span)
-        
-    });
+      }
+      var span = `<span id="span-`+this.name+`" class="card-text" style="color: green">`+`<center>`+value+`</center>`+`</span>`
+      $('#text-'+this.name).html(span)
+      
+  });
 }
-
-// function showPage() {
-//   document.getElementById("loader").style.display = "none";
-
-// }

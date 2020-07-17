@@ -1,6 +1,7 @@
+from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated, BasePermission, SAFE_METHODS
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser, JSONParser
 from rest_framework.exceptions import ParseError
@@ -13,7 +14,7 @@ from englishapp.models import EnglishAppModel, EnglishGameScoreModel
 from englishapp.serializers import EnglishAppSerializer, EnglishGameScoreSerializer
 from rest_framework.authtoken.models import Token
 
-from .permistions import IsAdminOrReadOnly, IsOwnerOrReadOnly
+from .permistions import IsAdminOrReadOnly, IsOwnerOrReadOnly, ReadOnly
 
 import random
 
@@ -35,10 +36,11 @@ class PersionInfoApiView(APIView):
 			return Response(serializer.data, status.HTTP_201_CREATED)
 		return(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
-class EnglishAppApiView(APIView):
+
+class EnglishGameApiView(APIView):
 	parser_classes = [MultiPartParser, FormParser, FileUploadParser,JSONParser]
 	authentication_classes= [TokenAuthentication]
-	permission_classes = [IsAdminOrReadOnly]
+	permission_classes = [ReadOnly]
 
 	def get(self, request, format=None):
 		queryset = EnglishAppModel.objects.all().order_by("?")[:6]
@@ -55,13 +57,6 @@ class EnglishAppApiView(APIView):
 			context['private_key'] = private_key
 		
 		return Response(context, status=status.HTTP_200_OK)
-
-	def post(self, request, format=None):
-		serializer = EnglishAppSerializer(data = request.data)
-		if serializer.is_valid():
-			serializer.save()
-			return Response(serializer.data, status.HTTP_201_CREATED)
-		return(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
 
 class EnglishGameScoreApiView(APIView):
@@ -82,6 +77,48 @@ class EnglishGameScoreApiView(APIView):
 			else:
 				return Response(status = status.HTTP_304_NOT_MODIFIED)
 		return(serializer.errors, status.HTTP_400_BAD_REQUEST)
+
+
+class EnglishGameManagerApiView(APIView):
+	parser_classes = [MultiPartParser, FormParser, FileUploadParser,JSONParser]
+	authentication_classes= [TokenAuthentication]
+	permission_classes = [IsAdminUser]
+
+	def get(self, request, format=None):
+		context = {}
+		queryset = EnglishAppModel.objects.all()
+		serializer = EnglishAppSerializer(instance=queryset, many=True)
+		context["gamedata"] = serializer.data
+		return Response(context, status=status.HTTP_200_OK)
+
+	def post(self, request, format=None):
+		serializer = EnglishAppSerializer(data = request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status.HTTP_201_CREATED)
+		return(serializer.errors, status.HTTP_400_BAD_REQUEST)
+
+
+	def delete(self, request, format=None):
+		try:
+			englishcard = EnglishAppModel.objects.get(card_name=request.data['card_name'])
+		except EnglishAppModel.DoesNotExist:
+			return Http404
+		englishcard.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+	def put(self, request, format=None):
+		try:
+			englishcard = EnglishAppModel.objects.get(card_name=request.data['name'])
+		except EnglishAppModel.DoesNotExist:
+			return Http404
+
+		englishcard.card_name = request.data['card_name']
+		englishcard.save()
+		return Response('Updated content')
+
+
 
 
 
