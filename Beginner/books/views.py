@@ -14,7 +14,7 @@ class BookIndex(generic.ListView):
 	model = Book
 	context_object_name = 'books'
 	template_name = 'books/book_list.html'
-	paginate_by = 6
+	paginate_by = 5
 	ordering = ['title']
 	def get_context_data(self, **kwargs):
 	    context = super(BookIndex, self).get_context_data(**kwargs)
