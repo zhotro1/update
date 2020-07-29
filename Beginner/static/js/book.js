@@ -14,7 +14,6 @@ function initdocument() {
 function base() {
     $("body").css("overflow", "hidden")
     $("iframe").css("overflow", "auto")
-	$("body").css("background", "black")
-	
+	$("body").css('background','#FBF0D9').css('color','#5F4B32')
 	
 }

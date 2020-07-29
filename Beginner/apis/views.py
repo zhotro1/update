@@ -15,8 +15,10 @@ from englishapp.serializers import EnglishAppSerializer, EnglishGameScoreSeriali
 from rest_framework.authtoken.models import Token
 
 from .permistions import IsAdminOrReadOnly, IsOwnerOrReadOnly, ReadOnly
-
 import random
+
+from books.models import Book
+from books.serializers import BookSerializer
 
 
 class PersionInfoApiView(APIView):
@@ -117,6 +119,27 @@ class EnglishGameManagerApiView(APIView):
 		englishcard.card_name = request.data['card_name']
 		englishcard.save()
 		return Response('Updated content')
+
+
+class BookManagerApiView(APIView):
+	parser_classes = [MultiPartParser, FormParser, FileUploadParser,JSONParser]
+	authentication_classes= [TokenAuthentication]
+	permission_classes = [IsAdminUser]
+
+	def get(self, request, format=None):
+		queryset = Book.objects.all()
+		serializer = BookSerializer(instance=queryset, many=True)
+		return Response(serializer.data)
+
+	def post(self, request, format=None):
+		serializer = BookSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
 
 
 

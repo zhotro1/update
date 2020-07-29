@@ -3,6 +3,7 @@ from .views import PersionInfoApiView
 from .views import EnglishGameApiView
 from .views import EnglishGameScoreApiView
 from .views import EnglishGameManagerApiView
+from .views import BookManagerApiView
 
 app_name = 'apis'
 
@@ -11,4 +12,5 @@ urlpatterns = [
 	path('v1/englishgame/', EnglishGameApiView.as_view(),name='englishgame-api'),
 	path('v1/englishscore/', EnglishGameScoreApiView.as_view(),name='englishscore-api'),
 	path('v1/englishmanager/', EnglishGameManagerApiView.as_view(),name='englishmanager-api'),
+	path('v1/bookmanager/', BookManagerApiView.as_view(),name='bookmanager-api'),
 ]

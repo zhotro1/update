@@ -14,8 +14,8 @@ class Book(models.Model):
 			raise ValidationError("Max file size is %sMB"%str(megabyte_limit))
 
 	title = models.CharField(max_length=500, unique=True)
-	image = models.ImageField(upload_to='books/images',validators=[validate_image])
-	descriptions = models.TextField()
+	image = models.ImageField(upload_to='books/images',validators=[validate_image], blank=True, null=True)
+	descriptions = models.TextField(blank=True, null=True)
 	author = models.CharField(max_length=125, blank=True)
 	slug = models.SlugField(editable=False, allow_unicode=True, unique=True, blank=True)
 	iframe = models.TextField(blank=True, null=True)

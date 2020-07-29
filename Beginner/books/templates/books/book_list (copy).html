@@ -10,20 +10,26 @@
 	            <div class="container">
                 <div class="row">
                     {% for book in books  %}
-                        <div class="col-md-10 mx-auto">
-                            <div class="card mb-1 shadow-sm">   
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                            	{% if book.image %}
+                            		<img class="img-thumbnail"  src="{{book.image.url}}"/>
+                            	{% else %}
+                            		<img class="img-thumbnail"  src="{{book.image_url}}"/>
+                            	{% endif %}
+                                
                                 <div class="card-body">
-                                    <h5 style="color:red"><i class="fa fa-book" aria-hidden="true"></i> <a href="{% url 'books:book-detail' slug=book.slug %}">{{book.title}}</a></h5>
+                                    <h5 style="color:red"><a href="{% url 'books:book-detail' slug=book.slug %}">{{book.title|truncatewords:10}}</h5></a>
                                     <p class="card-text" style="color: green">
-                                        <i class="fa fa-user" aria-hidden="true"></i> {{book.author}}
+                                        {{book.descriptions|truncatewords:20}}
                                     </p>
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
-                
-            
-            <div class="pagination mx-auto">
+                </div>
+            </div>
+            <div class="pagination">
                 <span class="step-links">
                     {% if page_obj.has_previous %}
                         <a href="?page=1">&laquo; {% trans "first" %}</a>
@@ -40,20 +46,10 @@
                     {% endif %}
                  </span>
             </div>
-        </div>
-    </div>
 	{% endif %}
 
 {% endblock content %}
 
-{% block script %}
-<script>
-    $("#thisishaha").html($("#myVar").val());
-</script>
-
-{% endblock script %}
-
 {% block footer %}
     {% include "mini_footer.html" %}
 {% endblock footer %}
-
